@@ -1,1 +1,3 @@
 # Plan-it
+
+This is a plateform where you can find all the service providers you need to plan your event : photographers, decorators, chefs ...
