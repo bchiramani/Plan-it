@@ -1,8 +1,25 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { AboutPageComponent } from './components/pages/about-page/about-page.component';
+import { ContactPageComponent } from './components/pages/contact-page/contact-page.component';
+import { HomePageComponent } from './components/pages/home-page/home-page.component';
+import { LoginPageComponent } from './components/pages/login-page/login-page.component';
+import { NotfoundComponent } from './components/pages/notfound/notfound.component';
+import { ServicesPageComponent } from './components/pages/services-page/services-page.component';
+import { SignupPageComponent } from './components/pages/signup-page/signup-page.component';
 
 
-const routes: Routes = [];
+const routes: Routes = [
+  {path: '',component:HomePageComponent},
+  {path: 'home',component:HomePageComponent},
+  {path:'about',component:AboutPageComponent},
+  {path:'contact',component:ContactPageComponent},
+  {path:'services',component:ServicesPageComponent},
+  {path:'login',component:LoginPageComponent},
+  {path:'signup',component:SignupPageComponent},
+  {path: '**',component:NotfoundComponent}
+
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
