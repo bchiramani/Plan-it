@@ -10,21 +10,42 @@
 <div class="container-xxl bg-light my-6 py-6 pt-0">
     <div class="container">
 
-        <div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
-            <h1 class="display-6 mb-4">Explore The Categories Of Our Bakery Products</h1>
-            <div class="col-12">
-                <div class="form-floating">
-                    <input type="text" class="form-control" id="subject" placeholder="Subject">
-                    <label for="subject">Subject</label>
+        <div class=" row  text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+            <h1 class=" display-6 mb-4">Explore The Categories Of Our Bakery Products</h1>
+            <div class="row">
+                <div class="col-7">
+                    <div class="form-floating">
+                        <input type="text" class="form-control" id="subject" placeholder="Subject">
+                    </div>
+                </div>
+
+                <div class="col-4">
+                    <div class="nav-item dropdown">
+
+                        <select class="dropdown nav-link dropdown-menu m-0" data-bs-toggle="dropdown" [(ngModel)]="category">
+                            <option class="dropdown-item" default value="">All</option>
+                            <option class="dropdown-item" value="Chef">Chefs</option>
+                            <option class="dropdown-item" value="Decorator">Decorators</option>
+                            <option class="dropdown-item" value="Photographer">Photographer</option>
+                            <option class="dropdown-item" value="Musicien">Musicien</option>
+                        </select>
+                    </div>
+
                 </div>
             </div>
+
         </div>
-        <div class="row g-4">
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
+        <ul class="row g-4">
+            <li class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s" *ngFor="let sprovider of sproviders">
+                <app-inversed-card [sprovider]="sprovider"></app-inversed-card>
+            </li>
+
+            <!-- <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
                     <div class="text-center p-4">
-                        <div class="d-inline-block border border-primary rounded-pill px-3 mb-3">$11 - $99</div>
-                        <h3 class="mb-3">Cake</h3>
+                        <h3 class="mb-3">Amani Bchir</h3>
+                        <div class="d-inline-block border border-primary rounded-pill px-3 mb-3">Decorator</div>
+                        <br>
                         <span>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</span>
                     </div>
                     <div class="position-relative mt-auto">
@@ -34,83 +55,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.3s">
-                <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                    <div class="text-center p-4">
-                        <div class="d-inline-block border border-primary rounded-pill pt-1 px-3 mb-3">$11 - $99</div>
-                        <h3 class="mb-3">Bread</h3>
-                        <span>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</span>
-                    </div>
-                    <div class="position-relative mt-auto">
-                        <img class="img-fluid" src="../assets/img/product-2.jpg" alt="">
-                        <div class="product-overlay">
-                            <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-primary"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                    <div class="text-center p-4">
-                        <div class="d-inline-block border border-primary rounded-pill pt-1 px-3 mb-3">$11 - $99</div>
-                        <h4 class="mb-3">Cookies</h4>
-                        <span>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</span>
-                    </div>
-                    <div class="position-relative mt-auto">
-                        <img class="img-fluid" src="../assets/img/product-3.jpg" alt="">
-                        <div class="product-overlay">
-                            <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-primary"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                    <div class="text-center p-4">
-                        <div class="d-inline-block border border-primary rounded-pill pt-1 px-3 mb-3">$11 - $99</div>
-                        <h4 class="mb-3">Cookies</h4>
-                        <span>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</span>
-                    </div>
-                    <div class="position-relative mt-auto">
-                        <img class="img-fluid" src="../assets/img/product-3.jpg" alt="">
-                        <div class="product-overlay">
-                            <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-primary"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                    <div class="text-center p-4">
-                        <div class="d-inline-block border border-primary rounded-pill pt-1 px-3 mb-3">$11 - $99</div>
-                        <h4 class="mb-3">Cookies</h4>
-                        <span>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</span>
-                    </div>
-                    <div class="position-relative mt-auto">
-                        <img class="img-fluid" src="../assets/img/product-3.jpg" alt="">
-                        <div class="product-overlay">
-                            <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-primary"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6 wow fadeInUp" data-wow-delay="0.5s">
-                <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
-                    <div class="text-center p-4">
-                        <div class="d-inline-block border border-primary rounded-pill pt-1 px-3 mb-3">$11 - $99</div>
-                        <h4 class="mb-3">Cookies</h4>
-                        <span>Tempor erat elitr rebum at clita dolor diam ipsum sit diam amet diam et eos</span>
-                    </div>
-                    <div class="position-relative mt-auto">
-                        <img class="img-fluid" src="../assets/img/product-3.jpg" alt="">
-                        <div class="product-overlay">
-                            <a class="btn btn-lg-square btn-outline-light rounded-circle" href=""><i class="fa fa-eye text-primary"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            </div> -->
+
+        </ul>
     </div>
 </div>
 <!-- Product End -->

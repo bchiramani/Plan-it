@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { SProvider } from 'src/app/models/SProvider';
+import { User } from 'src/app/models/User';
+import { SproviderService } from 'src/app/services/sprovider.service';
 
 @Component({
   selector: 'app-services-page',
@@ -6,10 +9,21 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./services-page.component.css']
 })
 export class ServicesPageComponent implements OnInit {
-
-  constructor() { }
+  sproviders:Array<SProvider>
+  category: string=""
+  constructor(private sproviderservice: SproviderService) { }
 
   ngOnInit() {
+    this.sproviders=this.sproviderservice.getAll()
+    console.log(this.sproviders)
+  }
+  onSelect(){
+    if (this.category ==""){
+      this.sproviders = this.sproviderservice.getAll()
+    }else{
+      this.sproviders = this.sproviderservice.getByCategory(this.category)
+    }
+    console.log(this.sproviders)
   }
 
 }

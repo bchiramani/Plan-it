@@ -1,0 +1,8 @@
+<div class="text-center mx-auto mb-5 wow fadeInUp" data-wow-delay="0.1s" style="max-width: 500px;">
+    <h1 class="display-6 mb-4">{{category}}</h1>
+</div>
+<ul class="row g-4">
+    <li class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s" *ngFor="let chef of chefs">
+        <app-card [sprovider]="chef"></app-card>
+    </li>
+</ul>
