@@ -12,11 +12,11 @@ export class UserService {
     ) {}
     
     
-    async findUser(email: string, password: string): Promise<User> {
+    async findUser(user: User): Promise<User> {
     return await this.userRepository.findOne({ 
         where: { 
-            email: email,
-            password: password
+            email: user.email,
+            password: user.password
             } 
         });
     }

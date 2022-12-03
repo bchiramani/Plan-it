@@ -20,7 +20,7 @@ export class LoginService {
 
   logIn(email: string, password: string): Observable<User> {
     var hash = bcrypt.hashSync(password, this.salt);
-    return this.http.post<User>(`${this.rootURL}/user/login`, { email, hash });
+    return this.http.post<User>(`${this.rootURL}/user/login`, new User(email, hash));
     
   }
 

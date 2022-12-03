@@ -9,8 +9,8 @@ export class UserController {
     constructor(private readonly userService: UserService) {}
     
     @Post('login')
-    async logIn(@Body() credentials: {email: string, password: string}): Promise<User> {
-        return await this.userService.findUser(credentials.email, credentials.password);
+    async logIn(@Body() user: User): Promise<User> {
+        return await this.userService.findUser(user);
     }
 
 }

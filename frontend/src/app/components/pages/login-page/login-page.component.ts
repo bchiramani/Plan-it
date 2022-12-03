@@ -29,7 +29,7 @@ export class LoginPageComponent implements OnInit {
         if (res != null) {
           this.router.navigate(['/home']);
         } else {
-          this.snackBar.open('Invalid email or password', 'Close', {duration: 2500});
+          this.snackBar.open('Invalid email or password', 'Close', {duration: 3000});
         }
       }
     );
