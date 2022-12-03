@@ -13,4 +13,11 @@ export class UserController {
         return await this.userService.findUser(user);
     }
 
+    /*
+    @Post('add')
+    async addUser(@Body() user: User): Promise<User> {
+        return await this.userService.addUser(user);
+    } **/
+
+
 }

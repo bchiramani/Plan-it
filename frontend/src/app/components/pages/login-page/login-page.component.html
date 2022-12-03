@@ -22,19 +22,13 @@
                                             <input type="password" [formControl]="user.password" class="form-control" required minlength="4" id="password" placeholder="Your Password" >
                                             <label for="password">Your Password</label>
                                         </div>
-                                        <div *ngIf="user.password.invalid && (user.password.dirty || user.password.touched)"class="alert">
-                                            <div *ngIf="user.password.errors?.required" style="color:red ;">
-                                                Password is required.
-                                            </div>
-                                            <div *ngIf="user.password.errors?.minlength"  style="color:red ;">
-                                                Password must be at least 4 characters long.
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                     <a class="mb-4" style="position:relative;bottom: 13px; left: 48%; font-size: 14px;">Don't have an account? Sign Up</a>
                                     <div class="col-12 text-center">
                                         <button class="btn btn-primary rounded-pill py-3 px-5"  type="submit" [disabled]="!loginForm.valid">Log In</button>
-                                        
+                                        <!-- <button class="btn btn-primary rounded-pill py-3 px-5"  type="button" (click)="onSignUp()" [disabled]="!loginForm.valid">Sign Up</button>
+                                    -->
                                     </div>
                                 </div>
                             </form>

@@ -13,12 +13,19 @@ export class UserService {
     
     
     async findUser(user: User): Promise<User> {
-    return await this.userRepository.findOne({ 
-        where: { 
-            email: user.email,
-            password: user.password
-            } 
-        });
+        console.log(user);
+        const res =  await this.userRepository.findOne({ 
+            where: { 
+                email: user.email,
+                password: user.password
+                } 
+            });
+        console.log(res);
+        return res;
     }
+
+  /*  async addUser(user: User): Promise<User> {
+        return await this.userRepository.save(user);
+    }*/
 
 }

@@ -29,11 +29,21 @@ export class LoginPageComponent implements OnInit {
         if (res != null) {
           this.router.navigate(['/home']);
         } else {
+          console.log(res)
           this.snackBar.open('Invalid email or password', 'Close', {duration: 3000});
         }
       }
     );
   }
+/*
+  onSignUp(){
+    this.loginService.addUser(this.user.email.value, this.user.password.value).subscribe(
+      res => {
+        console.log(res);
+        this.snackBar.open('User Added', 'Awsome', {duration: 3000});
+        }
+    );
+  }*/
 
 
 }
