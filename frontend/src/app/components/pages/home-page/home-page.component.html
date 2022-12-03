@@ -1,0 +1,31 @@
+<!-- Carousel Start -->
+<div class="container-fluid p-0 pb-5 wow fadeIn" data-wow-delay="0.1s">
+    <div class=" header-carousel position-relative">
+        <div class="owl-carousel-item position-relative">
+            <img class="img-fluid" src="../assets/img/chic-dinner.jpg" alt="">
+            <div class="owl-carousel-inner">
+                <div class="container">
+                    <div class="row justify-content-start">
+                        <div class="col-lg-8">
+                            <h1 class="display-1 text-light mb-4 animated slideInDown">Plan it with ease.</h1>
+                            <a [routerLink]="['about']" class="btn btn-primary rounded-pill py-3 px-5">Read More</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Carousel End -->
+
+<!-- Category Start -->
+<div class="container-xxl py-6">
+    <div class="container">
+        <div>
+            <div *ngFor="let category of categories" style="display:flex">
+                <app-card-list [category]="category"></app-card-list>
+            </div>
+        </div>
+        
+    </div>
+</div>
