@@ -20,7 +20,8 @@ export class UserService {
                 password: user.password
                 } 
             });
-        console.log(res);
+        console.log(user.email);
+        console.log(user.password);
         return res;
     }
 

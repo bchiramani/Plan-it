@@ -10,7 +10,7 @@ import * as bcrypt from 'bcryptjs';
 export class LoginService {
 
   rootURL = 'http://localhost:3000';
-  salt = bcrypt.genSaltSync(10);
+  salt = 10;
   
   constructor(private http: HttpClient) { }
 

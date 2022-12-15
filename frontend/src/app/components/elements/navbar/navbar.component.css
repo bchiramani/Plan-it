@@ -1,0 +1,11 @@
+#signup {
+    background-color: rgba(36, 36, 36, 0.7) ;
+    border-radius: 4px;
+    padding: 10px 24px;
+    cursor: pointer;
+    margin: auto;
+    transition-duration: 0.4s;
+    display: inline-block;
+    text-align: center;
+    border-color: #eca434;
+}

@@ -24,9 +24,9 @@
                                         </div>
                                         
                                     </div>
-                                    <a class="mb-4" style="position:relative;bottom: 13px; left: 48%; font-size: 14px;">Don't have an account? Sign Up</a>
+                                    <a class="mb-4" [routerLink]="['signup']" style="position:relative;bottom: 13px; left: 48%; font-size: 14px; margin-right: 0%">Don't have an account? Sign Up</a>
                                     <div class="col-12 text-center">
-                                        <button class="btn btn-primary rounded-pill py-3 px-5"  type="submit" [disabled]="!loginForm.valid">Log In</button>
+                                        <button class="btn btn-primary py-3 px-5"  type="submit" [disabled]="!loginForm.valid">Log In</button>
                                         <!-- <button class="btn btn-primary rounded-pill py-3 px-5"  type="button" (click)="onSignUp()" [disabled]="!loginForm.valid">Sign Up</button>
                                     -->
                                     </div>

@@ -5,6 +5,8 @@ import { UserController } from './user/user.controller';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { UserModule } from './user/user.module';
 import { UserService } from './user/user.service';
+import { ServiceProviderController } from './service-provider/service-provider.controller';
+import { ServiceProviderService } from './service-provider/service-provider.service';
 
 @Module({
   imports: [ 
@@ -20,8 +22,8 @@ import { UserService } from './user/user.service';
     autoLoadEntities: true,
   }), UserModule, 
 ],
-  controllers: [AppController, UserController],
-  providers: [AppService, UserService],
+  controllers: [AppController, UserController, ServiceProviderController],
+  providers: [AppService, UserService, ServiceProviderService],
 })
 export class AppModule {
   constructor() {}
