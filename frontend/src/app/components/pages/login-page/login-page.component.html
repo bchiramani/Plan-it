@@ -3,13 +3,13 @@
         <div class="owl-carousel-item position-relative">
             <div class="container-xxl py-6">
                 <div class="container" style="margin-top : 8%">
-                    <div class="text-center mx-auto mb-5 wow fadeInUp "data-wow-delay="0.1s" style="max-width: 500px;">
+                    <div class="text-center mx-auto mb-5 wow fadeInUp " data-wow-delay="0.1s" style="max-width: 500px;">
                         <h1 class="display-6 mb-4" style="color: whitesmoke;">Welcome to <span class="text-primary m-0">Plan.It</span></h1>
                     </div>
                     <div class="row g-0 justify-content-center">
                         <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
                             <p class="text-center mb-4" style="color: rgb(209, 209, 209);">Log In if you want to have the event of your life.</p>
-                            <form #loginForm ="ngForm" (ngSubmit)="onLogIn()">
+                            <form #loginForm="ngForm" (ngSubmit)="onLogIn()">
                                 <div class="row g-3" style="width:50%; margin: auto;">
                                     <div class="col-12">
                                         <div class="form-floating">
@@ -19,25 +19,25 @@
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="password" [formControl]="user.password" class="form-control" required minlength="4" id="password" placeholder="Your Password" >
+                                            <input type="password" [formControl]="user.password" class="form-control" required minlength="4" id="password" placeholder="Your Password">
                                             <label for="password">Your Password</label>
                                         </div>
-                                        
+
                                     </div>
-                                    <a class="mb-4" [routerLink]="['signup']" style="position:relative;bottom: 13px; left: 48%; font-size: 14px; margin-right: 0%">Don't have an account? Sign Up</a>
+                                    <a class="mb-4" [routerLink]="['/signup']" style="position:relative;bottom: 13px; left: 48%; font-size: 14px; margin-right: 0%">Don't have an account? Sign Up</a>
                                     <div class="col-12 text-center">
-                                        <button class="btn btn-primary py-3 px-5"  type="submit" [disabled]="!loginForm.valid">Log In</button>
+                                        <button class="btn btn-primary py-3 px-5" type="submit" [disabled]="!loginForm.valid">Log In</button>
                                         <!-- <button class="btn btn-primary rounded-pill py-3 px-5"  type="button" (click)="onSignUp()" [disabled]="!loginForm.valid">Sign Up</button>
                                     -->
                                     </div>
                                 </div>
                             </form>
-                            
+
                         </div>
                     </div>
                 </div>
-                
-            </div> 
+
+            </div>
         </div>
     </div>
-</div> 
+</div>

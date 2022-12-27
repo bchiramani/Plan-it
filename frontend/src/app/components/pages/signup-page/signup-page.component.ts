@@ -13,6 +13,7 @@ export class SignupPageComponent implements OnInit {
   }
 
   onSignUp() {
+    //redirect to profile/:id route
   }
 
 }

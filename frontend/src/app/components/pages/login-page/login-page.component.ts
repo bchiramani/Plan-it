@@ -3,7 +3,7 @@ import {NgForm} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/login.service';
+import { UserService } from 'src/app/services/user.service';
 
 
 @Component({
@@ -16,7 +16,7 @@ export class LoginPageComponent implements OnInit {
     
   user = {email: new FormControl(''), password: new FormControl('')};
 
-  constructor(private loginService: LoginService, public snackBar: MatSnackBar, private router: Router) { }
+  constructor(private userService: UserService, public snackBar: MatSnackBar, private router: Router) { }
 
 
   ngOnInit() {
@@ -24,7 +24,9 @@ export class LoginPageComponent implements OnInit {
 
 
   onLogIn(){
-    this.loginService.logIn(this.user.email.value, this.user.password.value).subscribe(
+    // for now khalina nekhdmou enou andena kin serverproviders , el users yodekhlou blech login w naemlou redirect kima hatit mlouta  
+ 
+    this.userService.logIn(this.user.email.value, this.user.password.value).subscribe(
       res => {
         if (res != null) {
           this.router.navigate(['/home']);
@@ -34,6 +36,8 @@ export class LoginPageComponent implements OnInit {
         }
       }
     );
+       //redirect to profile/:id route
+       //this.router.navigate(['profil',this.sprovider.id])
   }
 /*
   onSignUp(){

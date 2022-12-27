@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Post } from 'src/app/models/Post';
 import { SProvider } from 'src/app/models/SProvider';
+import { PostService } from 'src/app/services/post.service';
 import { SproviderService } from 'src/app/services/sprovider.service';
 
 @Component({
@@ -10,7 +12,8 @@ import { SproviderService } from 'src/app/services/sprovider.service';
 })
 export class DetailPageComponent implements OnInit {
   sprovider :SProvider;
-  constructor(private sproviderService : SproviderService , private activatedRoute: ActivatedRoute) { }
+  posts : Array<Post>;
+  constructor(private sproviderService : SproviderService, private postService : PostService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     let id ;
@@ -20,6 +23,9 @@ export class DetailPageComponent implements OnInit {
     );
     this.sprovider=this.sproviderService.getById(id)
       console.log(this.sprovider)
+
+    this.posts=this.postService.getSproviderPosts(id)
+    console.log(this.posts)
     // queryParams
     // this.route.queryParams.subscribe(params => {
     //   console.log("at details :",params); 

@@ -9,9 +9,10 @@
         <div class="navbar-nav mx-auto p-4 p-lg-0">
             <a [routerLink]="['home']" routerLinkActive="active" class="nav-item nav-link active">Home</a>
             <a [routerLink]="['about']" routerLinkActive="active" class="nav-item nav-link">About</a>
-            <a [routerLink]="['contact']" routerLinkActive="active" class="nav-item nav-link">Contact</a>
-            <a [routerLink]="['services']" routerLinkActive="active" class="nav-item nav-link">Services</a>
+            <a [routerLink]="['feed']" routerLinkActive="active" class="nav-item nav-link">Feed</a>
+            <a [routerLink]="['services']" routerLinkActive="active" class="nav-item nav-link">Service Providers</a>
             <a [routerLink]="['messageslist']" routerLinkActive="active" class="nav-item nav-link">Messages</a>
+            <a [routerLink]="['contact']" routerLinkActive="active" class="nav-item nav-link">Contact</a>
 
             <div class="nav-item dropdown">
                 <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
@@ -22,9 +23,9 @@
                 </div>
             </div>
             <a [routerLink]="['login']" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link">Log In</a>
-            
+
             <button [routerLink]="['signup']" id="signup" routerLinkActive="active" ariaCurrentWhenActive="page" type="button" class="btn nav-item nav-link btn-light">Sign Up</button>
-            
+
         </div>
         <div class=" d-none d-lg-flex">
             <div class="flex-shrink-0 btn-lg-square border border-light rounded-circle">

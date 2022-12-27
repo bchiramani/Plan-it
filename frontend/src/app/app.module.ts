@@ -21,6 +21,11 @@ import { InversedCardComponent } from './components/elements/inversed-card/inver
 import { CardListComponent } from './components/elements/card-list/card-list.component';
 import { DetailPageComponent } from './components/pages/detail-page/detail-page.component';
 import { HttpClientModule } from '@angular/common/http';
+import { ProfilPageComponent } from './components/pages/profil-page/profil-page.component';
+import { AddPostFormComponent } from './components/elements/add-post-form/add-post-form.component';
+import { PostComponent } from './components/elements/post/post.component';
+import { FeedPageComponent } from './components/pages/feed-page/feed-page.component';
+import { PostProfilComponent } from './components/elements/post-profil/post-profil.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +44,11 @@ import { HttpClientModule } from '@angular/common/http';
     InversedCardComponent,
     CardListComponent,
     DetailPageComponent,
+    ProfilPageComponent,
+    AddPostFormComponent,
+    PostComponent,
+    FeedPageComponent,
+    PostProfilComponent,
     
   ],
   imports: [

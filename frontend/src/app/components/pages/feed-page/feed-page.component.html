@@ -1,0 +1,18 @@
+<!-- Page Header Start -->
+<div class="container-fluid page-header py-6 wow fadeIn" data-wow-delay="0.1s">
+    <div class="container text-center pt-5 pb-3">
+        <h1 class="display-4 text-white animated slideInDown mb-3">Feed</h1>
+    </div>
+</div>
+<!-- Page Header End -->
+
+<!-- About Start -->
+<div class="container-xxl py-6">
+    <div class="container">
+        <ul class="row">
+            <li class="col-6" *ngFor="let post of posts">
+                <app-post [post]="post"></app-post>
+            </li>
+        </ul>
+    </div>
+</div>
