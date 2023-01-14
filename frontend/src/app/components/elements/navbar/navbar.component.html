@@ -1,0 +1,44 @@
+<nav class="navbar navbar-expand-lg navbar-dark fixed-top py-lg-0 px-lg-5 wow fadeIn" data-wow-delay="0.1s">
+    <a href="index.html" class="navbar-brand ms-4 ms-lg-0">
+        <h1 class="text-primary m-0">Plan.It</h1>
+    </a>
+    <button type="button" class="navbar-toggler me-4" data-bs-toggle="collapse" data-bs-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav mx-auto p-4 p-lg-0">
+            <a [routerLink]="['home']" routerLinkActive="active" class="nav-item nav-link active">Home</a>
+            <a [routerLink]="['about']" routerLinkActive="active" class="nav-item nav-link">About</a>
+            <a [routerLink]="['feed']" routerLinkActive="active" class="nav-item nav-link">Feed</a>
+            <a [routerLink]="['services']" routerLinkActive="active" class="nav-item nav-link">Service Providers</a>
+            <a [routerLink]="['messageslist']" routerLinkActive="active" class="nav-item nav-link">Messages</a>
+            <a [routerLink]="['contact']" routerLinkActive="active" class="nav-item nav-link">Contact</a>
+
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">Pages</a>
+                <div class="dropdown-menu m-0">
+                    <a href="team.html" class="dropdown-item">Our Team</a>
+                    <a href="testimonial.html" class="dropdown-item">Testimonial</a>
+                    <a href="404.html" class="dropdown-item">404 Page</a>
+                </div>
+            </div>
+
+            <button [routerLink]="['login']"> Login</button>
+            <!-- <div *ngIf="((connected=='false')||(connected== null))"><a [routerLink]="['login']" routerLinkActive="active" ariaCurrentWhenActive="page" class="nav-item nav-link">Log In</a></div>
+            <div *ngIf="((connected=='false')||(connected== null))"><a [routerLink]="['signup']" routerLinkActive="active" ariaCurrentWhenActive="page" class=" nav-item nav-link ">Sign Up</a></div>
+            <div *ngIf="((connected=='true')"><a (click)="goToAccount" routerLinkActive="active" ariaCurrentWhenActive="page" class=" nav-item nav-link ">Profile </a></div>
+            <div *ngIf="((connected=='true')"><a (click)="logout" routerLinkActive="active" ariaCurrentWhenActive="page" class=" nav-item nav-link ">LogOut</a></div>
+ -->
+
+        </div>
+        <div class=" d-none d-lg-flex">
+            <div class="flex-shrink-0 btn-lg-square border border-light rounded-circle">
+                <i class="fa fa-phone text-primary"></i>
+            </div>
+            <div class="ps-3">
+                <small class="text-primary mb-0">Call Us</small>
+                <p class="text-light fs-5 mb-0">+216 52 103 306</p>
+            </div>
+        </div>
+    </div>
+</nav>

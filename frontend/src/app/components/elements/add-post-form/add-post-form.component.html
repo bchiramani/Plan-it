@@ -1,0 +1,24 @@
+<div class="container-xxl bg-light my-6 py-6 pb-0" style="padding: 2em;margin:2em">
+
+    <h4> Add A New Post</h4>
+    <form #laddPostForm="ngForm" (ngSubmit)="addPost()">
+        <div class="col-12">
+            <div class="form-floating">
+                <textarea class="form-control" [formControl]="post.description" placeholder="Leave a message here" id="message" style="height: 200px"></textarea>
+                <label for="message">Add a description for your post</label>
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="form-floating">
+                <input type="file" class="form-control" id="image" [formControl]="post.image" placeholder="image">
+
+            </div>
+        </div>
+        <br>
+        <div class="col-12 text-center">
+            <button class="btn btn-primary rounded-pill py-3 px-5" type="submit">Add Post </button>
+        </div>
+    </form>
+
+
+</div>
