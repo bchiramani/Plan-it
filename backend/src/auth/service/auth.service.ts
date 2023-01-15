@@ -1,12 +1,11 @@
 import { Injectable } from '@nestjs/common';
-import { from, Observable, of } from 'rxjs';
 import { UserService } from 'src/user/service/user.service';
 import { User } from 'src/user/model/user.entity';
 import { JwtService } from '@nestjs/jwt';
 import { Repository } from 'typeorm/repository/Repository';
 import { InjectRepository } from '@nestjs/typeorm/dist/common/typeorm.decorators';
 
-const bcrypt=require('bcrypt');
+const bcrypt = require('bcrypt');
 
 @Injectable()
 export class AuthService {
@@ -30,41 +29,36 @@ export class AuthService {
     
   }
 
-
-  
   getUser(req: any) {
     return req.user;
 }
 
   async login(user: User) {
  
-    
     const fullUser = await this.userService.verifyUser(user)
-    if (fullUser) {
-        const email = fullUser.email
-        const id = fullUser.id
-        const payload = { email, id };
-        return {
-        access_token: this.jwtService.sign(payload),
-        };
-    }
-    return null ;
+    return this.respondWithToken(fullUser);
     
   }
 
   async signup(user: User) {
 
     const fullUser = await this.userService.addUser(user)
-    if (fullUser) {
-        const email = fullUser.email
-        const id = fullUser.id
-        const payload = { id, email };
-        return {
-        access_token: this.jwtService.sign(payload),
-        };
-    }
-
-    return null
+    return this.respondWithToken(fullUser);
     
 }
+
+  respondWithToken(user) {
+
+    if (user) {
+      const email = user.email
+      const id = user.id
+      const payload = { id, email };
+      return {
+        access_token: this.jwtService.sign(payload),
+      };
+  }
+
+  return null
+
+  }
 }

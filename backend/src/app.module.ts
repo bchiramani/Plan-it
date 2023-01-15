@@ -8,6 +8,7 @@ import { PostModule } from './post/post.module';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { ServiceTypesModule } from './service-types/service-types.module';
+
 @Module({
   imports: [ 
     ConfigModule.forRoot({isGlobal :true}),

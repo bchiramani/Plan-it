@@ -21,7 +21,7 @@ export class PostController {
     @Get(':userId')
     getPostsByUser(@Param("userId") userId : number):Promise<APost[]>{
         return this.postService.getPostsByUser(userId)
-       
+    
     }
 
 }

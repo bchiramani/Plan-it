@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import {NgForm} from '@angular/forms';
 import {MatSnackBar} from '@angular/material/snack-bar';
 import { FormControl } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 
 @Component({
@@ -16,7 +15,7 @@ export class LoginPageComponent implements OnInit {
     
   user = {email: new FormControl(''), password: new FormControl('')};
 
-  constructor(private userService: UserService, public snackBar: MatSnackBar, private router: Router) { }
+  constructor(private authService: AuthService, public snackBar: MatSnackBar, private router: Router) { }
 
 
   ngOnInit() {
@@ -24,9 +23,10 @@ export class LoginPageComponent implements OnInit {
 
 
   async onLogIn(){
-    this.userService.logIn(this.user.email.value, this.user.password.value).subscribe( (token) =>
+    this.authService.logIn(this.user.email.value, this.user.password.value).subscribe( (token) =>
       {
       
+        this.authService.setSession(token);
         if (token==null){
           this.snackBar.open('Invalid email or password', 'Close', {duration: 3000});
         }else{
