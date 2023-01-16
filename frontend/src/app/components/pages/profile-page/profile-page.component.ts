@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from 'src/app/models/User';
+import { AuthService } from 'src/app/services/auth.service';
 import { PostService } from 'src/app/services/post.service';
 import { SproviderService } from 'src/app/services/sprovider.service';
 
@@ -10,31 +11,34 @@ import { SproviderService } from 'src/app/services/sprovider.service';
   styleUrls: ['./profile-page.component.css']
 })
 export class ProfilePageComponent {
-  sprovider : User;
+  sprovider :User;
   posts :any;
-  constructor(private sproviderService : SproviderService , private postService: PostService, private activatedRoute: ActivatedRoute) { }
+  logo: string ;
+  constructor(private authService: AuthService, private sproviderService : SproviderService , private postService: PostService, private activatedRoute: ActivatedRoute,  private router: Router) { }
 
   ngOnInit() {
-    let id ;
-    
+    //get id from url
+    let idUrl ;
     this.activatedRoute.params.subscribe(
-      params=>{id=params['id']}
+      params=>{idUrl=params['id']}
     );
-    this.sprovider=this.sproviderService.getById(id)
-      console.log(this.sprovider)
-    this.postService.getPostsBySProvider(id).subscribe(
-      (data) => {
-        this.posts=data;
-      }
-    )
-    console.log(this.posts)
-    // queryParams
-    // this.route.queryParams.subscribe(params => {
-    //   console.log("at details :",params); 
-    //   this.user = params
-    //   console.log(this.user); 
-    //   }
-    // );
+    //test if connected ==true and  idUrl is == idToken
+    if (this.authService.isUserLoggedIn(idUrl)){
+      this.sproviderService.getById(idUrl).subscribe( (user) =>
+        {
+          console.log("user at profile is : ",user)
+          this.sprovider=user
+          this.logo=`../../../../assets/img/`+this.sprovider.logo;
+          console.log("my logo is ", this.logo)
+        }
+      )
+     
+    }else{
+      this.router.navigate(['**']);
+    }
+  }
+    
+
   }
 
-}
+

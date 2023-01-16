@@ -8,12 +8,16 @@ import { SproviderService } from 'src/app/services/sprovider.service';
   styleUrls: ['./services-page.component.css']
 })
 export class ServicesPageComponent implements OnInit {
-  sproviders:Array<User>
+  sproviders=[]
   category: string=""
   constructor(private sproviderservice: SproviderService) { }
 
   ngOnInit() {
-    this.sproviders = this.sproviderservice.getAll()
+    this.sproviderservice.getAllUsers().subscribe(data => {
+      for (let id in data){
+        this.sproviders.push(data[id])
+      }
+    })
     console.log(this.sproviders)
   }
   
@@ -22,9 +26,17 @@ export class ServicesPageComponent implements OnInit {
     this.category = event.target.value;
     if (this.category ==""){
       
-      this.sproviders = this.sproviderservice.getAll()
+      this.sproviderservice.getAllUsers().subscribe(data => {
+        for (let id in data){
+          this.sproviders.push(data[id])
+        }
+      })
     }else{
-      this.sproviders = this.sproviderservice.getByCategory(this.category)
+      this.sproviderservice.getByServiceType(this.category).subscribe(data => {
+        for (let id in data){
+          this.sproviders.push(data[id])
+        }
+      })
     }
     console.log(this.sproviders)
   }

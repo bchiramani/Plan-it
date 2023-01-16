@@ -5,6 +5,7 @@ import { InjectRepository } from '@nestjs/typeorm/dist/common/typeorm.decorators
 import { Observable, from} from 'rxjs';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import * as bcrypt from 'bcrypt';
+import { Param } from '@nestjs/common/decorators';
 
 @Injectable()
 export class UserService {
@@ -39,8 +40,35 @@ export class UserService {
                 email: email
                 } 
             });
+        
         return res
     }
+
+
+    async findOneById(id: {id:number}): Promise<User> {
+        console.log("at user service get user by id ", id.id)
+        // const res =  await this.userRepository.findOne({ 
+        //     where: { 
+        //         id: id
+        //         } 
+        //     });
+        const res = await this.userRepository.createQueryBuilder("user")
+        .where("user.id = :id", { id: id.id })
+        .getOne();
+
+            console.log("result at backend ",res)
+        return res
+    }
+     async getByServiceType(@Param() st: string){
+        console.log("i am at user service getByServiceType : ",st )
+        const res = await this.userRepository.createQueryBuilder("post")
+        .innerJoinAndSelect("user.serviceType", "user")
+        .where("user.serviceType = :serviceType", { serviceType: st })
+        .getMany();
+        return res
+    }
+
+
 
     
     findAll():  Observable<User[]> {

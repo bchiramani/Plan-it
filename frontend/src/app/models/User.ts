@@ -7,9 +7,9 @@ export class User {
     description: string;
     logo: string ;
     phoneNumber : string ;
-    constructor(email: string, password: string, id: number = null,  logo : string = "" , companyName : string = "", serviceType: string = "", description: string = "", phoneNumber : string = "") {
-        
-        this.id = id;
+    role:string;
+    constructor(email: string, password: string,companyName : string = "",serviceType: string = "",  phoneNumber : string = "", description: string = "", logo : string = "",role:string="" ) {
+        //this.id = id;
         this.email = email;
         this.password = password;
         this.companyName = companyName;
@@ -17,5 +17,6 @@ export class User {
         this.description = description;
         this.logo = logo;
         this.phoneNumber = phoneNumber;
+        this.role = role;
     }
 }

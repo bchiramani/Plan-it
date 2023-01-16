@@ -4,7 +4,7 @@
             <div class="container-xxl py-6">
                 <div class="container" style="margin-top : 8%">
                     <div class="text-center mx-auto mb-5 wow fadeInUp " data-wow-delay="0.1s" style="max-width: 500px;">
-                        <h1 class="display-6 mb-4" style="color: whitesmoke;"><span class="text-primary m-0">Plan.It</span> with ease</h1>
+                        <h1 class="display-6 mb-4" style="color: whitesmoke;"><span class="text-primary m-0">Sign up</span></h1>
                     </div>
                     <div class="row g-0 justify-content-center">
                         <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
@@ -23,6 +23,41 @@
                                             <label for="password">Your Password</label>
                                         </div>
 
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" [formControl]="user.companyName" class="form-control" id="companyName" placeholder="Company name">
+                                            <label for="text">Company name</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <select class="form-select" (change)="update($event)">
+                                            <option *ngFor="let type of types" [ngValue]="type">{{type}}</option>
+                                        </select>
+                                    </div>
+
+
+
+
+
+
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="number" [formControl]="user.phoneNumber" class="form-control" id="phoneNumber" placeholder="Phone number">
+                                            <label for="number">Phone number</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" [formControl]="user.description" class="form-control" id="description" placeholder=Description>
+                                            <label for="text">Description</label>
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="file" [formControl]="user.logo" class="form-control" id="logo" placeholder=logo>
+                                            <label for="filz">Logo</label>
+                                        </div>
                                     </div>
                                     <a class="mb-4" [routerLink]="['/login']" style="position:relative;bottom: 13px; left: 48%; font-size: 14px; margin-right: 0%">Already have an account? Log In.</a>
                                     <div class="col-12 text-center">

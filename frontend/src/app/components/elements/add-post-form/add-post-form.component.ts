@@ -4,6 +4,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { ActivatedRoute} from '@angular/router';
 import { Post } from 'src/app/models/Post';
 import { PostService } from 'src/app/services/post.service';
+import { SproviderService } from 'src/app/services/sprovider.service';
 
 @Component({
   selector: 'app-add-post-form',
@@ -12,17 +13,20 @@ import { PostService } from 'src/app/services/post.service';
 })
 export class AddPostFormComponent {
   post = {description: new FormControl(''), image: new FormControl('')}
-  constructor(private route:ActivatedRoute,public snackBar: MatSnackBar, private postService:PostService) { }
+  constructor(private route:ActivatedRoute,public snackBar: MatSnackBar, private postService:PostService, private sproviderService: SproviderService) { }
 
 
   addPost(){
-    let userId
-    this.route.paramMap.subscribe( paramMap => {
-      userId= Number(paramMap.get('id'));
-    })
+    let userId=1
     let description=this.post.description.value
-    let image=this.post.image.value
-    console.log(this.postService.addPost(userId,description,image))
+    let image = this.post.image.value.substring(12)
+    this.sproviderService.getById(userId).subscribe( (user) => {
+      user=user
+      console.log ("at component add post : the post is : ",description, image,"the user is : ",user)
+      this.postService.addPost(user,description,image)
+    })
+    
+    //console.log(this.postService.addPost(user,description,image))
   // .subscribe(
   //   res => {
   //     if (res != null) {

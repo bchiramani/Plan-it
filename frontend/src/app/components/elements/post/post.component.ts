@@ -11,11 +11,17 @@ import { SproviderService } from 'src/app/services/sprovider.service';
 })
 export class PostComponent {
   @Input() post :Post
-  sprovider: User;
+  sprovider: any;
   constructor(private router:Router,private sproviderService:SproviderService) {}
 
   ngOnInit() {
-    this.sprovider=this.sproviderService.getById(this.post.userId)
+    console.log("at post",this.post);
+    
+    this.sproviderService.getById(this.post.user.id).subscribe( (user) =>
+        {console.log("user at profile is : ",user)
+        this.sprovider=user}
+      )
+    
   }
 
   viewDetailsSProvider(){

@@ -14,12 +14,12 @@ export class APost {
     image: string;
 
     @Column()
-    date: Date;
+    date: string;
 
     @ManyToOne((type) => User, (user) => user.id)
     user: User ;
 
-    @ManyToOne((type) => ServiceType, (serviceType) => serviceType.id)
-    serviceType: ServiceType;
+    // @ManyToOne((type) => ServiceType, (serviceType) => serviceType.id)
+    // serviceType: ServiceType;
 
 }

@@ -1,9 +1,9 @@
 <div class="wow fadeInUp" data-wow-delay="0.1s" style="margin-bottom: 0px;">
-    <h1 class="display-8 mb-4">{{category}}</h1>
+    <h1 class="display-8 mb-4">{{type}}</h1>
 </div>
 <div class="row g-4">
-    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s" *ngFor="let chef of chefs">
-        <app-card [sprovider]="chef"></app-card>
+    <div class="col-lg-3 col-md-6 wow fadeInUp" data-wow-delay="0.1s" *ngFor="let sprovider of sproviders">
+        <app-card [sprovider]="sprovider"></app-card>
     </div>
 </div>
 <br><br><br><br>

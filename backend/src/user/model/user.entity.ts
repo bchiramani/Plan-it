@@ -14,6 +14,9 @@ export class User {
 
     @Column({ nullable: false })
     companyName: string;
+    
+    @Column({ nullable: false })
+    serviceType : string;
 
     @Column({ nullable: false })
     phoneNumber: number
@@ -23,6 +26,9 @@ export class User {
 
     @Column()
     description: string;
+
+    @Column({ nullable: false })
+    role: string;
 
     @BeforeInsert()
     emailToLowerCase(){

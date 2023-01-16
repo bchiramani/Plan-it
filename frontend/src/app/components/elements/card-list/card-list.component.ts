@@ -8,16 +8,19 @@ import { SproviderService } from 'src/app/services/sprovider.service';
   styleUrls: ['./card-list.component.css']
 })
 export class CardListComponent implements OnInit {
-  @Input() category: string
-  chefs: Array<User>
+  @Input() type: string
+  sproviders: Array<User>
   constructor(private sproviderservice: SproviderService) { }
 
 
 
   ngOnInit() {
-    console.log(this.category)
-    this.chefs = this.sproviderservice.getByCategory(this.category)
-    console.log(this.chefs)
+    this.sproviderservice.getByServiceType(this.type).subscribe(data => {
+      for (let id in data){
+        this.sproviders.push(data[id])
+      }
+    })
+   
   }
 
 }

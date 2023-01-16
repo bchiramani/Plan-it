@@ -26,13 +26,15 @@ export class LoginPageComponent implements OnInit {
     this.authService.logIn(this.user.email.value, this.user.password.value).subscribe( (token) =>
       {
       
-        this.authService.setSession(token);
+      
         if (token==null){
           this.snackBar.open('Invalid email or password', 'Close', {duration: 3000});
         }else{
-          let payload = token.access_token.split(".")[1];
+          this.authService.setSession(token);
+
+          let payload = token.access_token.split(".")[1];          
           const id = JSON.parse(window.atob(payload)).id;
-          console.log("id : ", id) ;
+          console.log(id)
           this.router.navigate(['/profile/' + id]);
         }
       }

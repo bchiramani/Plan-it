@@ -15,7 +15,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
-import { MessagesListPageComponent } from './components/pages/messages-list-page/messages-list-page.component';
 import { CardComponent } from './components/elements/card/card.component';
 import { InversedCardComponent } from './components/elements/inversed-card/inversed-card.component';
 import { CardListComponent } from './components/elements/card-list/card-list.component';
@@ -39,7 +38,6 @@ import { PostProfileComponent } from './components/elements/post-profile/post-pr
     ContactPageComponent,
     LoginPageComponent,
     SignupPageComponent,
-    MessagesListPageComponent,
     CardComponent,
     InversedCardComponent,
     CardListComponent,

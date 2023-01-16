@@ -8,16 +8,17 @@ import { PostService } from 'src/app/services/post.service';
   styleUrls: ['./feed-page.component.css']
 })
 export class FeedPageComponent {
-  posts : Array<Post>;
+  posts =[];
   constructor(private postService:PostService){}
 
   ngOnInit(){
    
-    this.postService.getAllPosts().subscribe(
-      (data) => {
-        this.posts=data;
+    this.postService.getAllPosts().subscribe(data =>{
+      
+      for (let i = 0; i < data.length; i++){
+        this.posts.push(data[i])
       }
-    )
-    console.log(this.posts)
+      console.log(this.posts[1].description);
+    })
   }
 }

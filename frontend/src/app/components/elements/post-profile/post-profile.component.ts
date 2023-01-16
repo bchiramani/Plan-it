@@ -15,7 +15,10 @@ export class PostProfileComponent {
   constructor(private router: Router , public snackBar: MatSnackBar,private sproviderService:SproviderService) { }
 
   ngOnInit() {
-    this.sprovider=this.sproviderService.getById(this.post.userId)
+    this.sproviderService.getById(this.post.user.id).subscribe( (user) =>
+        {console.log("user at profile is : ",user)
+        this.sprovider=user}
+      )
   }
   edit(){
     this.snackBar.open('edit post', 'edit', {duration: 3000});

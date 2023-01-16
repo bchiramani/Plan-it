@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ServiceTypeService } from 'src/app/services/service-type.service';
 import { SproviderService } from 'src/app/services/sprovider.service';
 
 @Component({
@@ -7,13 +8,22 @@ import { SproviderService } from 'src/app/services/sprovider.service';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent implements OnInit {
-  categories: string[];
+  types: string[];
 
-  constructor(private sproviderservice: SproviderService) { }
+  constructor(private sproviderservice: SproviderService,private serviceTypeService: ServiceTypeService) { }
 
   ngOnInit() {
 
-    this.categories= this.sproviderservice.getCategories()
+    this.serviceTypeService.getAllServiceTypes().subscribe(
+      (data) => {
+        console.log("types are " , data);
+        for (let id in data){
+          this.types.push(data[id].serviceName)
+        }
+        console.log("types are " , this.types)
+        
+      }
+     );
 
   }
 

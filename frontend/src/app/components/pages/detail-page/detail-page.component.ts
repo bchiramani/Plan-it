@@ -10,7 +10,7 @@ import { SproviderService } from 'src/app/services/sprovider.service';
   styleUrls: ['./detail-page.component.css']
 })
 export class DetailPageComponent implements OnInit {
-  sprovider : User;
+  sprovider : any;
   posts : any;
   constructor(private sproviderService : SproviderService, private postService : PostService, private activatedRoute: ActivatedRoute) { }
 
@@ -20,7 +20,11 @@ export class DetailPageComponent implements OnInit {
     this.activatedRoute.params.subscribe(
       params => { id = params['id'] }
     );
-    this.sprovider=this.sproviderService.getById(id)
+    
+    this.sproviderService.getById(id).subscribe( (user) =>
+        {console.log("user at profile is : ",user)
+        this.sprovider=user}
+      )
       console.log(this.sprovider)
 
       this.postService.getPostsBySProvider(id).subscribe(

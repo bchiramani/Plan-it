@@ -6,7 +6,6 @@ import { DetailPageComponent } from './components/pages/detail-page/detail-page.
 import { FeedPageComponent } from './components/pages/feed-page/feed-page.component';
 import { HomePageComponent } from './components/pages/home-page/home-page.component';
 import { LoginPageComponent } from './components/pages/login-page/login-page.component';
-import { MessagesListPageComponent } from './components/pages/messages-list-page/messages-list-page.component';
 import { NotfoundComponent } from './components/pages/notfound/notfound.component';
 import { ProfilePageComponent } from './components/pages/profile-page/profile-page.component';
 import { ServicesPageComponent } from './components/pages/services-page/services-page.component';
@@ -23,7 +22,6 @@ const routes: Routes = [
   {path:'login',component:LoginPageComponent},
   {path:'signup',component:SignupPageComponent},
   {path:'sproviderdetails/:id',component:DetailPageComponent},
-  {path:'messageslist',component:MessagesListPageComponent},
   {path:'profile/:id',component:ProfilePageComponent},
   {path: '**',component:NotfoundComponent}
 
