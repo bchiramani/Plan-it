@@ -11,8 +11,9 @@ export class PostController {
     constructor(private postService: PostService) {}
     @Public()
     @Get('getall')
-    getAll(): Promise<APost[]> {
-        return this.postService.getAllPosts();
+    async getAll(): Promise<APost[]> {
+        return await this.postService.getAllPosts();
+        
     }
     @Public()
     @Post('addpost')

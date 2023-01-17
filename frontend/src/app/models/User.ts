@@ -1,14 +1,16 @@
+import { ServiceType } from "./ServiceTypes";
+
 export class User {
     id: number;
     email: string;
     password: string;
     companyName : string ;
-    serviceType: string ;
+    serviceType: ServiceType ;
     description: string;
     logo: string ;
     phoneNumber : string ;
     role:string;
-    constructor(email: string, password: string,companyName : string = "",serviceType: string = "",  phoneNumber : string = "", description: string = "", logo : string = "",role:string="" ) {
+    constructor(email: string, password: string,companyName : string = "",serviceType: ServiceType=null,  phoneNumber : string = "", description: string = "", logo : string = "",role:string="" ) {
         //this.id = id;
         this.email = email;
         this.password = password;

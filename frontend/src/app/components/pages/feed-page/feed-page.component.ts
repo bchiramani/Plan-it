@@ -16,9 +16,10 @@ export class FeedPageComponent {
     this.postService.getAllPosts().subscribe(data =>{
       
       for (let i = 0; i < data.length; i++){
-        this.posts.push(data[i])
+        this.posts.push(<Post>data[i])
+        console.log(this.posts[i].description);
       }
-      console.log(this.posts[1].description);
+      
     })
   }
 }

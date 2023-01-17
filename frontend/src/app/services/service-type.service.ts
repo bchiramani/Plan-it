@@ -15,6 +15,9 @@ export class ServiceTypeService {
     return this.http.get<ServiceType[]>(`${environment.apiUrl}/${this.endpoint}/getall`);
 
   }
+  getServiceTypeByName(selectedType: string){
+    return this.http.get<ServiceType[]>(`${environment.apiUrl}/${this.endpoint}/getbyname/${selectedType}`);
+  }
 
 
 }

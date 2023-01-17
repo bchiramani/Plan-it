@@ -23,18 +23,18 @@ export class PostService {
   constructor(private http: HttpClient) { }
 
   addPost(user:any, description:string, image:string): Observable<Post> {
-    console.log("we are now at sprovider service !", user )
     const date = new Date();
     let day = date.getDate();
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
     let currentDate = `${day}-${month}-${year}`
-    return this.http.post<Post>(`http://localhost:3000/post/addPost`, new Post( user, description, image, currentDate));
+    let post=new Post( user, description, image, currentDate)
+    console.log(post)
+    return this.http.post<Post>(`${environment.apiUrl}/${this.endpoint}/addpost`, post);
   }
 
   getAllPosts():Observable<Post[]>{
     return this.http.get<Post[]>(`${environment.apiUrl}/${this.endpoint}/getall`);
-    //return this.http.get<Post[]>(`${environment.apiUrl}/${this.endpoint}`);
 
   }
   getPostsBySProvider(userId:Number){

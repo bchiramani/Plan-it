@@ -13,6 +13,11 @@ export class UserController {
     constructor(private userService: UserService) {
     }
     @Public()
+    @Get('getall')
+    getAll(){
+        return this.userService.findAll()
+    }
+    @Public()
     @Get('serviceType/:serviceType')
     getUserByServiceType(@Param() serviceType: string){
         console.log("at user controller by userType")

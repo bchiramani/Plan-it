@@ -12,21 +12,19 @@ import { SproviderService } from 'src/app/services/sprovider.service';
 export class PostComponent {
   @Input() post :Post
   sprovider: any;
+  image
   constructor(private router:Router,private sproviderService:SproviderService) {}
 
   ngOnInit() {
     console.log("at post",this.post);
-    
-    this.sproviderService.getById(this.post.user.id).subscribe( (user) =>
-        {console.log("user at profile is : ",user)
-        this.sprovider=user}
-      )
+    this.image=`../../../../assets/img/`+this.post.image;
+    console.log("my logo is ", this.image)
     
   }
 
   viewDetailsSProvider(){
     //redirect vers details sprovider
-    this.router.navigate(['sproviderdetails', this.sprovider.id])
+    this.router.navigate(['sproviderdetails', this.post.user.id])
   }
 
 }

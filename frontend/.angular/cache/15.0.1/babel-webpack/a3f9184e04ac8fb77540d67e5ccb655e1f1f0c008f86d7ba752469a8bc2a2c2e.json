@@ -1,0 +1,1 @@
+{"ast":null,"code":"export class Post {\n  constructor(user, description, image, date) {\n    this.user = user;\n    this.description = description;\n    this.image = image;\n    this.date = date;\n  }\n}","map":null,"metadata":{},"sourceType":"module","externalDependencies":[]}

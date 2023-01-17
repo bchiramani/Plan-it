@@ -55,15 +55,12 @@ export class UserService {
         const res = await this.userRepository.createQueryBuilder("user")
         .where("user.id = :id", { id: id.id })
         .getOne();
-
-            console.log("result at backend ",res)
         return res
     }
-     async getByServiceType(@Param() st: string){
-        console.log("i am at user service getByServiceType : ",st )
-        const res = await this.userRepository.createQueryBuilder("post")
-        .innerJoinAndSelect("user.serviceType", "user")
-        .where("user.serviceType = :serviceType", { serviceType: st })
+     async getByServiceType(@Param() serviceType: string){
+        const res = await this.userRepository.createQueryBuilder("user")
+        .innerJoinAndSelect("user.serviceType", "serviceType")
+        .where("serviceType.serviceName = :serviceType", { serviceType: serviceType })
         .getMany();
         return res
     }

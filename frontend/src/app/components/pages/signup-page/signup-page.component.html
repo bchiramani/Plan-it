@@ -9,25 +9,75 @@
                     <div class="row g-0 justify-content-center">
                         <div class="col-lg-8 wow fadeInUp" data-wow-delay="0.1s">
                             <p class="text-center mb-4" style="color: rgb(209, 209, 209);">Sign Up if you want to have the event of your life.</p>
-                            <form #signupForm="ngForm" (ngSubmit)="onSignUp()">
+                            <form [formGroup]="user">
                                 <div class="row g-3" style="width:50%; margin: auto;">
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="email" [formControl]="user.email" class="form-control" id="email" placeholder="Your Email">
+                                            <input type="email" formControlName="email" class="form-control" id="email" placeholder="Your Email">
                                             <label for="email">Your Email</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-12">
-                                        <div class="form-floating">
-                                            <input type="password" [formControl]="user.password" class="form-control" required minlength="4" id="password" placeholder="Your Password">
-                                            <label for="password">Your Password</label>
-                                        </div>
 
+                                            <div *ngIf="user.controls['email'].invalid && (user.controls['email'].touched || user.controls['email'].dirty)">
+                                                <div *ngIf="user.controls['email'].errors.required" class="text-danger">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        email is required
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="user.controls['email'].errors.email" class="text-danger">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        invalid email
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" [formControl]="user.companyName" class="form-control" id="companyName" placeholder="Company name">
+                                            <input type="password" formControlName="password" class="form-control" required minlength="4" id="password" placeholder="Your Password">
+                                            <label for="password">Your Password</label>
+
+                                            <div *ngIf="user.controls['password'].invalid && (user.controls['password'].touched || user.controls['password'].dirty)">
+                                                <div *ngIf="user.controls['password'].errors.required" class="text-danger">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        password is required
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="user.controls['password'].errors.password" class="text-danger">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        invalid password
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="user.controls['password'].errors.minlength" class="text-danger">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        Password Min Length is 4
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-12">
+                                        <div class="form-floating">
+                                            <input type="text" formControlName="companyName" class="form-control" id="companyName" placeholder="Company name">
                                             <label for="text">Company name</label>
+
+                                            <div *ngIf="user.controls['companyName'].invalid && (user.controls['companyName'].touched || user.controls['companyName'].dirty)">
+                                                <div *ngIf="user.controls['companyName'].errors.required" class="text-danger">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        Company Name is required
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="user.controls['companyName'].errors.companyName" class="text-danger">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        invalid Company Name
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="user.controls['companyName'].errors.minlength" class="text-danger">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        Company Name Min Length is 4
+                                                    </div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-12">
@@ -36,32 +86,50 @@
                                         </select>
                                     </div>
 
-
-
-
-
-
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="number" [formControl]="user.phoneNumber" class="form-control" id="phoneNumber" placeholder="Phone number">
+                                            <input type="number" formControlName="phoneNumber" class="form-control" id="phoneNumber" placeholder="Phone number">
                                             <label for="number">Phone number</label>
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="text" [formControl]="user.description" class="form-control" id="description" placeholder=Description>
+                                            <input type="text" formControlName="description" class="form-control" id="description" placeholder=Description>
                                             <label for="text">Description</label>
+
+                                            <div *ngIf="user.controls['description'].invalid && (user.controls['description'].touched || user.controls['description'].dirty)">
+                                                <div *ngIf="user.controls['description'].errors.required" class="text-danger">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        description is required
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="user.controls['description'].errors.description" class="text-danger">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        invalid description
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="user.controls['description'].errors.minlength" class="text-danger">
+                                                    <div class="alert alert-danger" role="alert">
+                                                        description Min Length is 4
+                                                    </div>
+                                                </div>
+                                            </div>
+
                                         </div>
                                     </div>
                                     <div class="col-12">
                                         <div class="form-floating">
-                                            <input type="file" [formControl]="user.logo" class="form-control" id="logo" placeholder=logo>
+                                            <input type="file" formControlName="logo" class="form-control" id="logo" placeholder=logo>
                                             <label for="filz">Logo</label>
+
+
+
+
                                         </div>
                                     </div>
                                     <a class="mb-4" [routerLink]="['/login']" style="position:relative;bottom: 13px; left: 48%; font-size: 14px; margin-right: 0%">Already have an account? Log In.</a>
                                     <div class="col-12 text-center">
-                                        <button class="btn btn-primary py-3 px-5" type="submit" [disabled]="!signupForm.valid">Sign Up</button>
+                                        <button class="btn btn-primary py-3 px-5" (click)="onSignUp()" type="submit" [disabled]="!user.valid">Sign Up</button>
 
 
                                     </div>

@@ -15,4 +15,12 @@ export class ServiceTypeService {
         const res =  await this.postRepository.find()
         return res
     }
+    async getByServiceName(serviceName){
+        const res =  await this.postRepository.findOne({ 
+            where: { 
+                serviceName: serviceName,
+                } 
+        })
+        return res
+    }
 }

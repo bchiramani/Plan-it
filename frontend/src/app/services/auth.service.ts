@@ -4,6 +4,7 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import * as moment from "moment";
 import { environment } from 'src/environments/environment';
 import { User } from '../models/User';
+import { ServiceType } from '../models/ServiceTypes';
 
 @Injectable({
   providedIn: 'root'
@@ -21,24 +22,26 @@ export class AuthService {
     logIn(email: string, password: string): Observable<any>{
         let res=this.http.post<User>(`${environment.apiUrl}/${this.endpoint}/login`, new User(email, password));
         console.log(res)
-        if (res){
-            localStorage.setItem('loggedIn', 'true');
-            this.isLoggedIn$.next(true);
-        }
+        // if (res){
+        //     localStorage.setItem('loggedIn', 'true');
+        //     this.isLoggedIn$.next(true);
+        // }
         return  res              
     }
 
-    signUp(email: string, password: string,companyName:string,serviceType:string,phoneNumber:string,description:string,logo:string,role:string ): Observable<any> {
+    signUp(email: string, password: string,companyName:string,serviceType:ServiceType,phoneNumber:string,description:string,logo:string,role:string ): Observable<any> {
         let res=this.http.post(`${environment.apiUrl}/${this.endpoint}/signup`, new User(email, password,companyName,serviceType,phoneNumber,description,logo,role));
-        if (res){
-            localStorage.setItem('loggedIn', 'true');
-            this.isLoggedIn$.next(true);
-        }
+        // if (res){
+        //     localStorage.setItem('loggedIn', 'true');
+        //     this.isLoggedIn$.next(true);
+        // }
         return  res      
     }
 
     setSession(token) {
         localStorage.setItem('id_token', token.access_token.split(".")[1]);
+        localStorage.setItem('loggedIn', 'true');
+        this.isLoggedIn$.next(true);
     }         
 
     logout() {

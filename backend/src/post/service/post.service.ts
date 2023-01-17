@@ -32,7 +32,10 @@ export class PostService {
 
 
     async getAllPosts() {
-        return await this.postRepository.find()
+        const posts = await this.postRepository.createQueryBuilder("post")
+        .innerJoinAndSelect("post.user", "user")
+        .getMany()
+        return posts
         
     }
 

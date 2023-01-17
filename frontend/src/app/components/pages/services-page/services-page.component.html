@@ -14,12 +14,18 @@
             <h1 class=" display-6 mb-4">Explore The Categories Of Our Bakery Products</h1>
             <div class="row g-2">
                 <div class="col-7">
-                    <div >
+                    <div>
                         <input type="text" class="form-control" id="subject" placeholder="Subject">
                     </div>
                 </div>
-
                 <div class="col-4">
+                    <select class="form-select" (change)="update($event)">
+                        <option value="all"> All </option>
+                        <option *ngFor="let type of types" [ngValue]="type">{{type}}</option>
+                    </select>
+                </div>
+
+                <!-- <div class="col-4">
                     <div class="nav-item dropdown">
                         <select id="select" class="dropdown nav-link dropdown-menu m-0" data-bs-toggle="dropdown" (change)="selectChangeHandler($event)">
                             <option id ="All" class="dropdown-item" default>All</option>
@@ -29,7 +35,7 @@
                             <option id ="musiciens"  class="dropdown-item" >Musicien</option>
                         </select>
                     </div>
-                </div>
+                </div> -->
             </div>
 
         </div>

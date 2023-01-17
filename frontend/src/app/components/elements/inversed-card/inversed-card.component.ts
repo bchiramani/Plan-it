@@ -10,9 +10,12 @@ import { User } from 'src/app/models/User';
 })
 export class InversedCardComponent implements OnInit {
   @Input() sprovider: User;
+  image
   constructor(private router: Router) { }
 
   ngOnInit() {
+    this.image=`../../../../assets/img/`+this.sprovider.logo;
+    console.log("my logo is ", this.image)
   }
   viewDetails(){
     this.router.navigate(['sproviderdetails',this.sprovider.id])

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from 'src/app/models/User';
+import { ServiceTypeService } from 'src/app/services/service-type.service';
 import { SproviderService } from 'src/app/services/sprovider.service';
 
 @Component({
@@ -9,8 +10,9 @@ import { SproviderService } from 'src/app/services/sprovider.service';
 })
 export class ServicesPageComponent implements OnInit {
   sproviders=[]
-  category: string=""
-  constructor(private sproviderservice: SproviderService) { }
+  types=[];
+   selectedType: string
+  constructor(private sproviderservice: SproviderService, private serviceTypeService: ServiceTypeService) { }
 
   ngOnInit() {
     this.sproviderservice.getAllUsers().subscribe(data => {
@@ -18,27 +20,34 @@ export class ServicesPageComponent implements OnInit {
         this.sproviders.push(data[id])
       }
     })
-    console.log(this.sproviders)
+    this.serviceTypeService.getAllServiceTypes().subscribe(
+      (data) => {
+        console.log("types are " , data);
+        for (let id in data){
+          this.types.push(data[id].serviceName)
+        }
+        
+      }
+     );
   }
-  
-  selectChangeHandler (event: any) {
-    console.log(event.target.value)
-    this.category = event.target.value;
-    if (this.category ==""){
-      
+  update(e){
+    this.selectedType = e.target.value
+    console.log("the selected value is  : " , this.selectedType)
+    this.sproviders=[]
+    if (this.selectedType =="all"||this.selectedType =="" ){
       this.sproviderservice.getAllUsers().subscribe(data => {
         for (let id in data){
           this.sproviders.push(data[id])
         }
       })
     }else{
-      this.sproviderservice.getByServiceType(this.category).subscribe(data => {
+      this.sproviderservice.getByServiceType(this.selectedType).subscribe(data => {
         for (let id in data){
           this.sproviders.push(data[id])
         }
       })
     }
-    console.log(this.sproviders)
   }
-
+  
+ 
 }

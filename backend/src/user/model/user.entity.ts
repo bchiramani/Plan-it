@@ -1,5 +1,6 @@
 import { APost } from 'src/post/model/post.entity';
-import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, OneToMany } from 'typeorm';
+import { ServiceType } from 'src/service-types/model/service-types.entity';
+import { Entity, Column, PrimaryGeneratedColumn, BeforeInsert, OneToMany, ManyToOne } from 'typeorm';
 
 @Entity()
 export class User {
@@ -14,9 +15,6 @@ export class User {
 
     @Column({ nullable: false })
     companyName: string;
-    
-    @Column({ nullable: false })
-    serviceType : string;
 
     @Column({ nullable: false })
     phoneNumber: number
@@ -39,5 +37,9 @@ export class User {
         cascade: true,
     })
     posts : APost[];
+
+    @ManyToOne((serviceType) => ServiceType, (serviceType) => serviceType.id)
+    serviceType : ServiceType;
+
 
 }
