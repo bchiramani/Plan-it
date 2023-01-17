@@ -34,7 +34,6 @@ export class LoginPageComponent implements OnInit {
 
           let payload = token.access_token.split(".")[1];          
           const id = JSON.parse(window.atob(payload)).id;
-          console.log(id)
           this.router.navigate(['/profile/' + id]);
         }
       }

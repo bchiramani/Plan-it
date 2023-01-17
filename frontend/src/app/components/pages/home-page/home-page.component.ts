@@ -16,11 +16,9 @@ export class HomePageComponent implements OnInit {
 
     this.serviceTypeService.getAllServiceTypes().subscribe(
       (data) => {
-        console.log("types are " , data);
         for (let id in data){
           this.types.push(data[id].serviceName)
         }
-        console.log("types are " , this.types)
         
       }
      );

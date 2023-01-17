@@ -7,20 +7,19 @@ import { ServiceType } from '../model/service-types.entity';
 export class ServiceTypeService {
 
     constructor(
-        @InjectRepository(ServiceType) private postRepository: Repository<ServiceType>,
+        @InjectRepository(ServiceType) private serviceTypeRepository: Repository<ServiceType>,
     ) {}
 
 
     async getAllServiceTypes() {
-        const res =  await this.postRepository.find()
+        const res =  await this.serviceTypeRepository.find()
         return res
     }
-    async getByServiceName(serviceName){
-        const res =  await this.postRepository.findOne({ 
-            where: { 
-                serviceName: serviceName,
-                } 
-        })
+    async getByServiceByName(serviceName){
+        const res = await this.serviceTypeRepository.createQueryBuilder("serviceType")
+        .where("servicetype.serviceName = :serviceName", { serviceName: serviceName })
+        .getOne();
+        
         return res
     }
 }

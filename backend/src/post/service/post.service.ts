@@ -19,6 +19,7 @@ export class PostService {
     }
 
 
+
     async getPostsByServiceType(serviceType: string): Promise<APost[]> {
         const posts = await this.postRepository.createQueryBuilder("post")
         .innerJoinAndSelect("post.user", "user")
@@ -50,8 +51,12 @@ export class PostService {
     }
 
     async addPost(post: APost): Promise<APost> {
-        console.log("post at backend service : ", post)
+        console.log("add post at service :", post);
         return await this.postRepository.save(post);
+    }
+    async deletePost(id: string): Promise<void>{
+        console.log("delete post at service ")
+        await this.postRepository.delete(id);
     }
 
 }

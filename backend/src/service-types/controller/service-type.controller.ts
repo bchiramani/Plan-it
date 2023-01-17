@@ -16,8 +16,8 @@ export class ServiceTypeController {
     }
     @Public()
     @Get('getbyname/:selectedType')
-    async getByName(@Param() selectedType: string): Promise<ServiceType> {
-        return this.serviceTypeService.getByServiceName(selectedType)
+    async getByName(@Param() selectedType): Promise<ServiceType> {
+        return this.serviceTypeService.getByServiceByName(selectedType.selectedType)
     }
 
 }

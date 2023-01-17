@@ -17,7 +17,6 @@ export class FeedPageComponent {
       
       for (let i = 0; i < data.length; i++){
         this.posts.push(<Post>data[i])
-        console.log(this.posts[i].description);
       }
       
     })

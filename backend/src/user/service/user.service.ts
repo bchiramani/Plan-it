@@ -46,12 +46,6 @@ export class UserService {
 
 
     async findOneById(id: {id:number}): Promise<User> {
-        console.log("at user service get user by id ", id.id)
-        // const res =  await this.userRepository.findOne({ 
-        //     where: { 
-        //         id: id
-        //         } 
-        //     });
         const res = await this.userRepository.createQueryBuilder("user")
         .where("user.id = :id", { id: id.id })
         .getOne();
@@ -68,13 +62,17 @@ export class UserService {
 
 
     
-    findAll():  Observable<User[]> {
-        return from(this.userRepository.find()).pipe(
-            map((users: User[]) => {
-                users.forEach(function (v) {delete v.password});
-                return users;
-            })
-        );
+    async findAll(){
+        const res = await this.userRepository.createQueryBuilder("user")
+        .innerJoinAndSelect("user.serviceType", "serviceType")
+        .getMany()
+        return res
+        // from(this.userRepository.find()).pipe(
+        //     map((users: User[]) => {
+        //         users.forEach(function (v) {delete v.password});
+        //         return users;
+        //     })
+        // );
     }
     deleteUser(id: number): Observable<any>{
         return from(this.userRepository.delete(id))

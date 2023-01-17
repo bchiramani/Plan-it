@@ -15,7 +15,6 @@ export class InversedCardComponent implements OnInit {
 
   ngOnInit() {
     this.image=`../../../../assets/img/`+this.sprovider.logo;
-    console.log("my logo is ", this.image)
   }
   viewDetails(){
     this.router.navigate(['sproviderdetails',this.sprovider.id])

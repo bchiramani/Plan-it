@@ -22,8 +22,10 @@ export class AddPostFormComponent {
     let image = this.post.image.value.substring(12)
     this.sproviderService.getById(userId).subscribe( (user) => {
       user=user
-      console.log ("at component add post : the post is : ",description, image,"the user is : ",user)
-      this.postService.addPost(user,description,image)
+      console.log ("at component add post :",description, image,user)
+      this.postService.addPost(user,description,image).subscribe(data=>{
+        console.log(data)
+      })
     })
     
     //console.log(this.postService.addPost(user,description,image))

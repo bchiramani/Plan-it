@@ -32,7 +32,6 @@ export class SproviderService {
   getById(id: number){
     let user
     user= this.http.get<User>(`http://localhost:3000/user/byId/${id}`)
-    console.log("at front service user is : ", user)
     if (user){
        return user
     }
@@ -48,8 +47,8 @@ export class SproviderService {
     return this.http.get<User[]>(`${environment.apiUrl}/${this.endpoint}/getall`);
   }
 
-  getByServiceType(category: String){
-    return this.http.get<User[]>(`${environment.apiUrl}/${this.endpoint}/serviceType/:${category}`);
+  getByServiceType(type: String){
+    return this.http.get<User[]>(`${environment.apiUrl}/${this.endpoint}/serviceType/${type}`);
 
   }
 

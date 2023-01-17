@@ -44,7 +44,15 @@
             </div>
             <ul class="row ">
                 <li class="col-6 " *ngFor="let post of posts ">
-                    <app-post-profile [post]="post "></app-post-profile>
+                    <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
+
+                        <app-post-profile [post]="post "></app-post-profile>
+                        <div class="row">
+                            <div class="col-6 text-end"> <a class="btn btn-lg-square btn-outline-light rounded-circle" (click)="edit()"><i class="fa fa-edit text-primary"></i></a></div>
+                            <div class="col-6 text-start"> <a class="btn btn-lg-square btn-outline-light rounded-circle" (click)="delete(post.id)"><i class="fa fa-trash text-primary"></i></a></div>
+
+                        </div>
+                    </div>
                 </li>
             </ul>
         </div>

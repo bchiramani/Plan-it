@@ -41,7 +41,6 @@ export class AuthService {
   }
 
   async signup(user: User) {
-    console.log(user)
 
     const fullUser = await this.userService.addUser(user)
     return this.respondWithToken(fullUser);

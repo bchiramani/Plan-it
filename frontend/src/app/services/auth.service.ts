@@ -20,22 +20,14 @@ export class AuthService {
     }
 
     logIn(email: string, password: string): Observable<any>{
-        let res=this.http.post<User>(`${environment.apiUrl}/${this.endpoint}/login`, new User(email, password));
-        console.log(res)
-        // if (res){
-        //     localStorage.setItem('loggedIn', 'true');
-        //     this.isLoggedIn$.next(true);
-        // }
-        return  res              
+        return this.http.post<User>(`${environment.apiUrl}/${this.endpoint}/login`, new User(email, password));
+                     
     }
 
     signUp(email: string, password: string,companyName:string,serviceType:ServiceType,phoneNumber:string,description:string,logo:string,role:string ): Observable<any> {
-        let res=this.http.post(`${environment.apiUrl}/${this.endpoint}/signup`, new User(email, password,companyName,serviceType,phoneNumber,description,logo,role));
-        // if (res){
-        //     localStorage.setItem('loggedIn', 'true');
-        //     this.isLoggedIn$.next(true);
-        // }
-        return  res      
+        console.log("at auth service service type is : ",serviceType)
+        return this.http.post(`${environment.apiUrl}/${this.endpoint}/signup`, new User(email, password,companyName,serviceType,phoneNumber,description,logo,role));
+           
     }
 
     setSession(token) {

@@ -8,6 +8,7 @@ import { PostModule } from './post/post.module';
 import { JwtAuthGuard } from './auth/jwt-auth.guard';
 import { APP_GUARD } from '@nestjs/core';
 import { ServiceTypesModule } from './service-types/service-types.module';
+import { AuthGuard } from './auth/authGuard.guard';
 
 @Module({
   imports: [ 
@@ -26,7 +27,7 @@ import { ServiceTypesModule } from './service-types/service-types.module';
   }), AuthModule, PostModule, ServiceTypesModule
 ],
   controllers: [AppController],
-  providers: [AppService,
+  providers: [AppService,AuthGuard,
     {
       provide: APP_GUARD,
       useClass: JwtAuthGuard,

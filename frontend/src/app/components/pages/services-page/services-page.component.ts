@@ -20,9 +20,9 @@ export class ServicesPageComponent implements OnInit {
         this.sproviders.push(data[id])
       }
     })
+    
     this.serviceTypeService.getAllServiceTypes().subscribe(
       (data) => {
-        console.log("types are " , data);
         for (let id in data){
           this.types.push(data[id].serviceName)
         }
@@ -32,7 +32,6 @@ export class ServicesPageComponent implements OnInit {
   }
   update(e){
     this.selectedType = e.target.value
-    console.log("the selected value is  : " , this.selectedType)
     this.sproviders=[]
     if (this.selectedType =="all"||this.selectedType =="" ){
       this.sproviderservice.getAllUsers().subscribe(data => {
@@ -41,6 +40,7 @@ export class ServicesPageComponent implements OnInit {
         }
       })
     }else{
+      console.log("selected type at component : ",this.selectedType)
       this.sproviderservice.getByServiceType(this.selectedType).subscribe(data => {
         for (let id in data){
           this.sproviders.push(data[id])

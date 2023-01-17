@@ -4,6 +4,7 @@ import {MatSnackBar} from '@angular/material/snack-bar';
 import { Post } from 'src/app/models/Post';
 import { SproviderService } from 'src/app/services/sprovider.service';
 import { User } from 'src/app/models/User';
+import { PostService } from 'src/app/services/post.service';
 @Component({
   selector: 'app-post-profile',
   templateUrl: './post-profile.component.html',
@@ -12,19 +13,16 @@ import { User } from 'src/app/models/User';
 export class PostProfileComponent {
   @Input() post: Post;
   sprovider: User
-  constructor(private router: Router , public snackBar: MatSnackBar,private sproviderService:SproviderService) { }
+  image:string
+  constructor(private router: Router , public snackBar: MatSnackBar,private sproviderService:SproviderService, private postService: PostService) { }
 
   ngOnInit() {
-    this.sproviderService.getById(this.post.user.id).subscribe( (user) =>
-        {console.log("user at profile is : ",user)
-        this.sprovider=user}
+    this.sproviderService.getById(this.post.user.id).subscribe( (user) =>{
+        this.sprovider=user
+        this.image=`../../../../assets/img/`+this.post.image;
+      }
       )
   }
-  edit(){
-    this.snackBar.open('edit post', 'edit', {duration: 3000});
-  }
-  delete(){
-    this.snackBar.open('would you like to delete this post ?',"delete", {duration: 3000});
-  }
+ 
 
 }

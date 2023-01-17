@@ -12,33 +12,29 @@ import { SproviderService } from 'src/app/services/sprovider.service';
 export class DetailPageComponent implements OnInit {
   sprovider : any;
   posts : any;
+  logo: string ;
   constructor(private sproviderService : SproviderService, private postService : PostService, private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     let id ;
     
+    
     this.activatedRoute.params.subscribe(
       params => { id = params['id'] }
     );
     
-    this.sproviderService.getById(id).subscribe( (user) =>
-        {console.log("user at profile is : ",user)
-        this.sprovider=user}
+    this.sproviderService.getById(id).subscribe( (user) =>{
+        this.sprovider=user
+        this.logo=`../../../../assets/img/`+this.sprovider.logo;
+      }
       )
-      console.log(this.sprovider)
 
       this.postService.getPostsBySProvider(id).subscribe(
         (data) => {
           this.posts=data;
         }
       )
-    // queryParams
-    // this.route.queryParams.subscribe(params => {
-    //   console.log("at details :",params); 
-    //   this.user = params
-    //   console.log(this.user); 
-    //   }
-    // );
+    
   }
 
 }

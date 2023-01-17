@@ -19,14 +19,12 @@ export class UserController {
     }
     @Public()
     @Get('serviceType/:serviceType')
-    getUserByServiceType(@Param() serviceType: string){
-        console.log("at user controller by userType")
-        return this.userService.getByServiceType(serviceType)
+    getUserByServiceType(@Param() serviceType){
+        return this.userService.getByServiceType(serviceType.serviceType)
     }
     @Get('byId/:id')
     getUserById(@Param()id : {id:number}):Promise<User>{
         let myUser: User
-        console.log("at user controller by id ")
         return this.userService.findOneById(id)
     }
   

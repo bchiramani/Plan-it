@@ -22,15 +22,15 @@ export class PostService {
 
   constructor(private http: HttpClient) { }
 
-  addPost(user:any, description:string, image:string): Observable<Post> {
+  addPost(user:any, description:string, image:string) {
     const date = new Date();
     let day = date.getDate();
     let month = date.getMonth() + 1;
     let year = date.getFullYear();
     let currentDate = `${day}-${month}-${year}`
     let post=new Post( user, description, image, currentDate)
-    console.log(post)
-    return this.http.post<Post>(`${environment.apiUrl}/${this.endpoint}/addpost`, post);
+    console.log("post at service is ",post)
+    return this.http.post(`${environment.apiUrl}/${this.endpoint}/addpost`, post);
   }
 
   getAllPosts():Observable<Post[]>{
@@ -39,5 +39,8 @@ export class PostService {
   }
   getPostsBySProvider(userId:Number){
     return this.http.get<Post[]>(`${environment.apiUrl}/${this.endpoint}/${userId}`);
+  }
+  deletePost(postId:number){
+    return this.http.delete(`${environment.apiUrl}/${this.endpoint}/deletepost/${postId}`);
   }
 }

@@ -36,13 +36,11 @@ export class SignupPageComponent implements OnInit {
       description: ['',[Validators.required]], 
       logo: ['',[]]
     })
-    console.log(this.types)
     this.serviceTypeService.getAllServiceTypes().subscribe(
       (data) => {
         for (let id in data){
           this.types.push(data[id].serviceName)
         }
-        console.log("types are " , this.types)
         
       }
      );
@@ -50,7 +48,6 @@ export class SignupPageComponent implements OnInit {
   }
   update(e){
     this.selectedType = e.target.value
-    console.log("the selected value is  : " , this.selectedType)
   }
   
 
@@ -59,26 +56,27 @@ export class SignupPageComponent implements OnInit {
     let st
     this.serviceTypeService.getServiceTypeByName(this.selectedType).subscribe(data => {
       st=data
+      this.authService.signUp( 
+        this.user.value.email, 
+        this.user.value.password,
+        this.user.value.companyName,
+        st,
+        this.user.value.phoneNumber,
+        this.user.value.description,
+        logo,
+        "serviceProvider"
+      ).subscribe(
+          token => {
+          this.authService.setSession(token);
+          let payload = token.access_token.split(".")[1];
+          const id = JSON.parse(window.atob(payload)).id;
+          this.snackBar.open('User Added', 'Awesome', {duration: 1000});
+          this.router.navigate([`/profile/${id}`]);
+          }
+      );
+      
     })
-    return  this.authService.signUp( 
-      this.user.value.email, 
-      this.user.value.password,
-      this.user.value.companyName,
-      st,
-      this.user.value.phoneNumber,
-      this.user.value.description,
-      logo,
-      "serviceProvider"
-    ).subscribe(
-        token => {
-        this.authService.setSession(token);
-        let payload = token.access_token.split(".")[1];
-        const id = JSON.parse(window.atob(payload)).id;
-        console.log(id)
-        this.snackBar.open('User Added', 'Awesome', {duration: 1000});
-        this.router.navigate([`/profile/${id}`]);
-        }
-    );
+    
   }
  
     

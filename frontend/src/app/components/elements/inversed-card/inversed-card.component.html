@@ -1,7 +1,9 @@
 <div class="product-item d-flex flex-column bg-white rounded overflow-hidden h-100">
     <div class="text-center p-4">
         <h3 class="mb-3">{{sprovider.companyName}}</h3>
-        <div class="d-inline-block border border-primary rounded-pill px-3 mb-3">{{sprovider.serviceType}}</div>
+
+        <div class="d-inline-block border border-primary rounded-pill px-3 mb-3">{{sprovider.serviceType.serviceName}}</div>
+
         <br>
         <span>{{sprovider.description}}</span>
     </div>
