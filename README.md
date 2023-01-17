@@ -11,7 +11,7 @@ For service providers, we offer the opportunity to register and showcase your wo
 
 ## Technologies
 
-For this project, we have chosen to use Angular for the frontend development and NestJs for the backend. Both Angular and NestJs are popular and widely-used technologies that provide powerful tools and features for building modern web applications. Angular is a JavaScript framework that is used for building dynamic and interactive single page applications, while NestJs is a framework built on top of Node.js that allows for the development of efficient and scalable server-side applications.
-To store the data for our project, we have decided to use MySql. MySql is a widely-used, open-source relational database management system that is known for its reliability, scalability, and ease of use. MySql is compatible with both Angular and NestJs, which allows for seamless integration between the frontend and backend of the application.
+For this project, we have chosen to use **Angular** for the frontend development and **NestJs** for the backend. Both Angular and NestJs are popular and widely-used technologies that provide powerful tools and features for building modern web applications. Angular is a JavaScript framework that is used for building dynamic and interactive single page applications, while NestJs is a framework built on top of Node.js that allows for the development of efficient and scalable server-side applications.
+To store the data for our project, we have decided to use **MySql**. MySql is a widely-used, open-source relational database management system that is known for its reliability, scalability, and ease of use. MySql is compatible with both Angular and NestJs, which allows for seamless integration between the frontend and backend of the application.
 
 
