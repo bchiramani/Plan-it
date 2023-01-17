@@ -29,7 +29,7 @@ export class ProfilePageComponent {
         {
           this.sprovider=user
           this.logo=`../../../../assets/img/`+this.sprovider.logo;
-          console.log(this.sprovider.id)
+          console.log(this.sprovider)
           this.postService.getPostsBySProvider(this.sprovider.id).subscribe((data) => 
           {
             this.posts=data;
@@ -38,6 +38,7 @@ export class ProfilePageComponent {
       )
         }
       )
+      console.log(this.sprovider)
     }else{
       this.router.navigate(['**']);
     }
@@ -45,6 +46,7 @@ export class ProfilePageComponent {
 
 
   edit(){
+    console.log(this.sprovider)
     this.snackBar.open('edit post', 'edit', {duration: 3000});
   }
   delete(id){
@@ -64,6 +66,7 @@ export class ProfilePageComponent {
     });
   }
     
+
 
   }
 

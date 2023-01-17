@@ -16,6 +16,7 @@ export class PostComponent {
   constructor(private router:Router,private sproviderService:SproviderService) {}
 
   ngOnInit() {
+    console.log(this.post)
     this.image=`../../../../assets/img/`+this.post.image;
     
   }

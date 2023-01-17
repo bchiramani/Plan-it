@@ -17,9 +17,10 @@ export class PostProfileComponent {
   constructor(private router: Router , public snackBar: MatSnackBar,private sproviderService:SproviderService, private postService: PostService) { }
 
   ngOnInit() {
+    this.image=`../../../../assets/img/`+this.post.image;
     this.sproviderService.getById(this.post.user.id).subscribe( (user) =>{
         this.sprovider=user
-        this.image=`../../../../assets/img/`+this.post.image;
+        
       }
       )
   }

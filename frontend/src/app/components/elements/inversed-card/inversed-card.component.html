@@ -3,12 +3,13 @@
         <h3 class="mb-3">{{sprovider.companyName}}</h3>
 
         <div class="d-inline-block border border-primary rounded-pill px-3 mb-3">{{sprovider.serviceType.serviceName}}</div>
-
+        <br>
+        <div class="d-inline-block border border-primary rounded-pill px-3 mb-3">{{sprovider.phoneNumber}}</div>
         <br>
         <span>{{sprovider.description}}</span>
     </div>
     <div class="position-relative mt-auto">
-        <img class="img-fluid" [src]="image" alt="">
+        <img width="300px" height="300px" class="img-fluid" [src]="image" alt="">
         <div class="product-overlay">
             <a class="btn btn-lg-square btn-outline-light rounded-circle" (click)="viewDetails()"><i class="fa fa-eye text-primary"></i></a>
         </div>

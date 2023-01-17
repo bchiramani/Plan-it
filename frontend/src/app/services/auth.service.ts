@@ -62,6 +62,13 @@ export class AuthService {
         }
         
     }
+    getIdConnectedUser(){
+        let token=localStorage.getItem('id_token',)
+        //let payload = token.access_token.split(".")[1];
+        const id = JSON.parse(window.atob(token)).id;
+        console.log("id =",id)
+        return id
+    }
     // getExpiration() {
     //     const expiration = localStorage.getItem("expires_at");
     //     const expiresAt = JSON.parse(expiration);
